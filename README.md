@@ -34,7 +34,7 @@ Routing:
 all in the spirit for RESTful-like api.
 
 Components:
-Aimed to be as reusable as they could be in this project. Goal was to avoid having duplicate Tailwind styles, to respec tthe DRY principle, but also to have consistent styling.
+Aimed to be as reusable as they could be in this project. Goal was to avoid having duplicate Tailwind styles, to respect the DRY principle, but more importantly, to have consistent styling.
 Component compisition was the underlying philisophy. Small components that build to something greater.
 
 Data flow:
