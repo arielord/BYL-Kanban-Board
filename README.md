@@ -27,10 +27,10 @@ To keep things simple we used React Context for global state.
 Without an actual backend, we're using localStorage API as our persistent data layer.
 
 Routing:
-```/tasks``` for showing all our tasks (kanban board)
-```/tasks/:id``` for showing a specific task and all it's details
-```/tasks/:id/edit``` editing a specific tasks
-```/tasks/new``` to create a new task
+1. ```/tasks``` for showing all our tasks (kanban board)
+2. ```/tasks/:id``` for showing a specific task and all it's details
+3. ```/tasks/:id/edit``` editing a specific tasks
+4. ```/tasks/new``` to create a new task
 all in the spirit for RESTful-like api.
 
 Components:
