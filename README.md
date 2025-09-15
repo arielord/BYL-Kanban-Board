@@ -35,7 +35,7 @@ all in the spirit for RESTful-like api.
 
 Components:
 Aimed to be as reusable as they could be in this project. Goal was to avoid having duplicate Tailwind styles, to respect the DRY principle, but more importantly, to have consistent styling.
-Component compisition was the underlying philisophy. Small components that build to something greater.
+Component composition was the underlying philisophy. Small components that build to something greater.
 
 Data flow:
 Tasks were part of the global state. Tha main feature is the board of tasks, so any updates to tasks should re-render the board. Tasks can only be updated via user interation.
