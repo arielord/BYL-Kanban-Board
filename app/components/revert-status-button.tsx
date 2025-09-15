@@ -3,14 +3,14 @@
 import { useContext } from "react"
 import { fetchTask, updateTask } from "@/app/lib/api"
 import { validTaskStatuses } from "@/app/lib/types"
-import { TasksContext } from "@/app/tasks/page"
+import { TasksContext } from "@/app/components/tasks-board"
 
 export default function RevertStatusButton(props: { id: string }) {
-  const {tasks, setTasks} = useContext(TasksContext);
+  const { setTasks } = useContext(TasksContext);
     const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
       e.stopPropagation();
       e.preventDefault();
-      let task = fetchTask(props.id);
+      const task = fetchTask(props.id);
       if (task && validTaskStatuses.indexOf(task.status) > 0) {
         const updatedTasks = updateTask(task.id, { status: validTaskStatuses[validTaskStatuses.indexOf(task.status) - 1] });
         setTasks(updatedTasks);

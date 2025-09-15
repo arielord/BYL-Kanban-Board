@@ -2,14 +2,14 @@
 import { fetchTask, updateTask } from "@/app/lib/api"
 import { validTaskStatuses } from "@/app/lib/types"
 import { useContext } from "react"
-import { TasksContext } from "@/app/tasks/page"
+import { TasksContext } from "@/app/components/tasks-board"
 
 export default function ProgressStatusButton(props: {id: string}) {
-  const {setTasks} = useContext(TasksContext);
+  const { setTasks } = useContext(TasksContext);
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
     e.preventDefault();
-    let task = fetchTask(props.id);
+    const task = fetchTask(props.id);
     if (task && validTaskStatuses.indexOf(task.status) < validTaskStatuses.length - 1) {
       const updatedTasks = updateTask(task.id, { status: validTaskStatuses[validTaskStatuses.indexOf(task.status) + 1] });
       setTasks(updatedTasks);

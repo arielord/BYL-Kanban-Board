@@ -6,7 +6,7 @@ import { use } from "react";
 
 export default function TaskPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
-  let task = fetchTask(id);
+  const task = fetchTask(id);
   return (
     <div>
         {task ? (

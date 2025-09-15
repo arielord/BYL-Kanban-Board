@@ -20,13 +20,13 @@ export function fetchTasks(filter?: string): Task[] {
 }
 
 export function fetchTask(id: string): Task | undefined {
-  let tasks: Task[] = fetchTasks();
+  const tasks: Task[] = fetchTasks();
 
   return tasks.find(task => task.id === id);
 }
 
 export function createTask(newTask: Partial<Task>): Task[] {
-  let tasks: Task[] = fetchTasks();
+  const tasks: Task[] = fetchTasks();
 
   newTask.id = (localStorage.getItem('taskIdCounter') || tasks.length + 1).toString();
   localStorage.setItem('taskIdCounter', (parseInt(newTask.id) + 1).toString());
