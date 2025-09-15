@@ -12,8 +12,6 @@ type TaskFormProps = {
 
 export default function TaskForm({ handleClick, taskId }: TaskFormProps) {
   const task = taskId ? fetchTask(taskId) : null;
-  console.log("task in TaskForm:", task);
-  console.log("taskId in TaskForm:", taskId);
   const [formData, setFormData] = useState({
       title: task?.title || "",
       assignee: task?.assignee || "",
@@ -23,7 +21,6 @@ export default function TaskForm({ handleClick, taskId }: TaskFormProps) {
   
     function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
       const { id, value } = e.target;
-      console.log(id, value);
       setFormData({ ...formData, [id]: value });
     }
 

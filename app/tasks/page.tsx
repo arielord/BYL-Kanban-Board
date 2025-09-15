@@ -1,7 +1,7 @@
 "use client";
 
 import TaskCard from "@/app/components/task-card";
-import { Task } from "@/app/lib/types";
+import { Task, TaskStatus, validTaskStatuses } from "@/app/lib/types";
 import seedData from "@/app/lib/seed-data";
 import { useState, createContext } from "react";
 import CreateButton from "@/app/components/create-button";
@@ -15,6 +15,10 @@ export const TasksContext = createContext<{
   tasks: [],
   setTasks: () => {},
 });
+
+function getStatusIndex(status: TaskStatus) {
+  return validTaskStatuses.indexOf(status);
+}
 
 export default function Page() {
   seedData();
@@ -30,11 +34,11 @@ export default function Page() {
   return (
     <TasksContext.Provider value={{ tasks, setTasks }}>
       <Input handleChange={handleChange} placeholder="Search tasks..." type="text" />
-      <div className="py-4 grid grid-cols-3 grid-flow-row-dense gap-4">
-        <h2 className="text-center">Scheduled</h2>
-        <h2 className="text-center">In Progress</h2>
-        <h2 className="text-center">Done</h2>
-        {tasks.map((task) => (
+      <div className="py-4 grid sm:grid-cols-3 grid-flow-row-dense gap-4">
+        <h2 className="sm:block hidden text-center">Scheduled</h2>
+        <h2 className="sm:block hidden text-center">In Progress</h2>
+        <h2 className="sm:block hidden text-center">Done</h2>
+        {tasks.sort((a, b) => getStatusIndex(a.status) - getStatusIndex(b.status)).map((task) => (
           <TaskCard key={task.id} task={task} />
         ))}
       </div>

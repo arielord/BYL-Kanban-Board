@@ -18,18 +18,17 @@ function canAdvanceStatus(task: Task) {
 
 export default function TaskCard({ task }: { task: Task }) {
     const colStartMap = {
-      "scheduled": "col-start-1",
-      "in-progress": "col-start-2",
-      "done": "col-start-3",
+      "scheduled": "sm:col-start-1",
+      "in-progress": "sm:col-start-2",
+      "done": "sm:col-start-3",
     };
 
     return (
       <Link href={`/tasks/${task.id}`} className="contents">
-        {/* <div className={`${colStartMap[task.status]} hover:bg-sky-200 h-full bg-gray-300 p-4 rounded-md shadow-md text-black`}> */}
         <div className={clsx(colStartMap[task.status], "hover:bg-sky-200 h-full bg-gray-300 p-4 rounded-md shadow-md text-black")}>
           <DeleteButton id={task.id} />
           <h3 className="font-bold text-center">{task.title}</h3>
-          <h4 className="font-bold">Status: {task.status}</h4>
+          <h4 className="sm:hidden font-bold">Status: {task.status}</h4>
           <p>Assignee: {task.assignee}</p>
           <p>Tags: {task.tags.join(", ")}</p>
 
